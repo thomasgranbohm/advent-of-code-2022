@@ -1,7 +1,13 @@
-DAY_OF_THE_MONTH := $(shell date +%-d)
-DAY_DIR := day-$(shell printf %02d $(DAY_OF_THE_MONTH))
-
 COOKIE := $(shell cat ./.cookie)
+
+DAY_OF_THE_MONTH := $(wordlist 2,$(words $(MAKECMDGOALS)),$(MAKECMDGOALS))
+$(eval $(DAY_OF_THE_MONTH):;@:)
+
+ifndef DAY_OF_THE_MONTH
+DAY_OF_THE_MONTH := $(shell date +%-d)	
+endif
+
+DAY_DIR := day-$(shell printf %02d $(DAY_OF_THE_MONTH))
 
 day: download-input
 	@echo "Day $(DAY_OF_THE_MONTH) created!"
