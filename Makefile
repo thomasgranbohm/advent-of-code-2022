@@ -4,7 +4,7 @@ DAY_OF_THE_MONTH := $(wordlist 2,$(words $(MAKECMDGOALS)),$(MAKECMDGOALS))
 $(eval $(DAY_OF_THE_MONTH):;@:)
 
 ifndef DAY_OF_THE_MONTH
-DAY_OF_THE_MONTH := $(shell date +%-d)	
+DAY_OF_THE_MONTH := $(strip $(shell date +%-d))
 endif
 
 DAY_DIR := day-$(shell printf %02d $(DAY_OF_THE_MONTH))
