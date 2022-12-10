@@ -9,10 +9,10 @@ endif
 
 DAY_DIR := day-$(shell printf %02d $(DAY_OF_THE_MONTH))
 
-day: download-input
+day: create-day download-input
 	@echo "Day $(DAY_OF_THE_MONTH) created!"
 
-download-input: create-day
+download-input:
 ifeq ($(COOKIE),)
 	@echo "Cookie file is empty."
 	@exit 1;
