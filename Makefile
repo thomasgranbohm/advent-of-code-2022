@@ -25,3 +25,8 @@ create-day:
 	@cargo new -q $(DAY_DIR)
 	@echo "Copying template..."
 	@cp template.rs $(DAY_DIR)/src/main.rs
+
+solve: 
+	@git add $(DAY_DIR)
+	@git commit -m "Day ${DAY_OF_THE_MONTH} solved!";
+	
